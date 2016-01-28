@@ -3,16 +3,17 @@ import {MyAppService} from './app.service';
 
 @Component({
   selector: 'my-app',
-  templateUrl: 'app/app.component.html'
+  templateUrl: 'app/app.component.html',
+  providers: [MyAppService]
 })
-@Inject(MyAppService)
 export class AppComponent implements OnInit {
   title = 'Hello World!';
 
-  constructor() {
+  constructor(myAppService:MyAppService) {
+    this.myAppService = myAppService;
   }
 
   ngOnInit() {
-    this.title = this.MyAppService.getList().join(',');
+    this.title = this.myAppService.getList().join(',');
   }
 }
