@@ -12,7 +12,4 @@ npm install
 ```
 npm start
 ```
-Which basically will start concurrently the babel transpiler with files changes watcher and the lite-server which will listen on port 3000 (lite-server automatically opens the default browser and redirects you to localhost: 3000)
-
-###### More to come
-**Tour of Heroes** demo app from Angular 2 official
+Open your favourite browser and navigate to localhost:3001.
