@@ -11,7 +11,7 @@ const JS_FILES = ['src/**/*.js'];
 const CSS_FILES = ['src/**/*.scss'];
 const HTML_FILES = ['src/**/*.html'];
 const TARGET = 'dist';
-const HTTP_PORT = '3000';
+const HTTP_PORT = 3000;
 
 // Vendor scripts, the order matters.
 const VENDOR_FILES = [
