@@ -1,4 +1,4 @@
-import {Component, OnInit} from 'angular2/core';
+import {Component, OnInit, Inject} from 'angular2/core';
 
 @Component({
   selector: 'my-app',
@@ -7,9 +7,10 @@ import {Component, OnInit} from 'angular2/core';
 export class AppComponent implements OnInit {
   title = 'Hello World!';
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
-    this.title = 'Angular2 + ES6 + Babel';
+    this.title = 'Angular2 + Babel + SystemJS'
   }
 }
