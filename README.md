@@ -17,8 +17,6 @@ npm start
 ###### More to come
 **Tour of Heroes** demo app from Angular 2 official
 
-##### More examples
-====
+## More examples
 ###### Routing & Navigation
-
 Switch the branch to ```feature/routing-navigation``` - [Angular example - Routing & Navigation](https://angular.io/docs/ts/latest/guide/router.html) basically works as is, but transpiled by Babel from ES6.
