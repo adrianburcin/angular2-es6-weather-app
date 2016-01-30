@@ -1,7 +1,7 @@
-import {Component,  OnInit}  from 'angular2/core';
-import {RouteParams, Router} from 'angular2/router';
+import { Component, OnInit } from 'angular2/core';
+import { RouteParams, Router } from 'angular2/router';
 
-import {Hero, HeroService}   from './hero.service';
+import { HeroService } from './hero.service';
 
 @Component({
   template: `
@@ -30,15 +30,15 @@ export class HeroDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    let id = this.routeParams.get('id');
+    const id = this.routeParams.get('id');
     this.service.getHero(id).then(hero => this.hero = hero);
   }
 
   gotoHeroes() {
-    let heroId = this.hero ? this.hero.id : null;
+    const heroId = this.hero ? this.hero.id : null;
     // Pass along the hero id if available
     // so that the HeroList component can select that hero.
     // Add a totally useless `foo` parameter for kicks.
-    this.router.navigate(['Heroes', {id: heroId, foo: 'foo'}]);
+    this.router.navigate(['Heroes', { id: heroId, foo: 'foo' }]);
   }
 }

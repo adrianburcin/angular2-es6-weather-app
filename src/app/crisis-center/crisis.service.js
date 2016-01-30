@@ -1,4 +1,4 @@
-import {Injectable} from 'angular2/core';
+import { Injectable } from 'angular2/core';
 
 export class Crisis {
   constructor(id, name) {
@@ -6,6 +6,15 @@ export class Crisis {
     this.name = name;
   }
 }
+
+const crises = [
+  new Crisis(1, 'Princess Held Captive'),
+  new Crisis(2, 'Dragon Burning Cities'),
+  new Crisis(3, 'Giant Asteroid Heading For Earth'),
+  new Crisis(4, 'Release Deadline Looms')
+];
+
+const crisesPromise = Promise.resolve(crises);
 
 @Injectable()
 export class CrisisService {
@@ -15,26 +24,16 @@ export class CrisisService {
 
   getCrisis(id) {
     return crisesPromise
-      .then(crises => crises.filter(c => c.id === +id)[0]);
+      .then(crisesArray => crisesArray.filter(c => c.id === +id)[0]);
   }
-
 
   static nextCrisisId = 100;
 
   addCrisis(name) {
-    name = name.trim();
-    if (name) {
-      let crisis = new Crisis(CrisisService.nextCrisisId++, name);
-      crisesPromise.then(crises => crises.push(crisis));
+    const nameTrim = name.trim();
+    if (nameTrim) {
+      const crisis = new Crisis(CrisisService.nextCrisisId++, nameTrim);
+      crisesPromise.then(crisesArray => crisesArray.push(crisis));
     }
   }
 }
-
-var crises = [
-  new Crisis(1, 'Princess Held Captive'),
-  new Crisis(2, 'Dragon Burning Cities'),
-  new Crisis(3, 'Giant Asteroid Heading For Earth'),
-  new Crisis(4, 'Release Deadline Looms')
-];
-
-var crisesPromise = Promise.resolve(crises);
