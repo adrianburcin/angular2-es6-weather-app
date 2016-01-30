@@ -9,9 +9,14 @@ npm install
 
 ###### Run
 ```
-npm start
+npm run client
 ```
-Open your favourite browser and navigate to localhost:3001.
+starts the client app
+
+```
+npm run server
+```
+starts the Koa instance
 
 ###### More to come
 **Tour of Heroes** demo app from Angular 2 official
@@ -23,3 +28,4 @@ Switch the branch to ```feature/Routing_and_Navigation``` - [Angular example - R
 
 ###### Todo App example
 Switch branch to ```feature/Create_Todo_App``` - example of creating a todo app using Ng2 ES6 boilerplate
+
