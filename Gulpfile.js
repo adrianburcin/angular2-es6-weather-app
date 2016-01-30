@@ -77,6 +77,7 @@ gulp.task('watch', ['browser-sync'], () => {
     gulp.watch(JS_FILES, ['app-js', browserSync.reload]);
     gulp.watch(CSS_FILES, ['app-css', browserSync.reload]);
     gulp.watch(HTML_FILES, ['app-html', browserSync.reload]);
+    gulp.watch(JS_FILES, ['eslint-app-js', browserSync.reload]);
 });
 
 gulp.task('default', $.sequence('eslint-app-js', 'app-html', 'vendor-js', 'app-js', 'app-css'));
