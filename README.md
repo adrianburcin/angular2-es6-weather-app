@@ -13,13 +13,11 @@ npm run client
 ```
 starts the client app
 
+
 ```
 npm run server
 ```
-starts the Koa instance
-
-###### More to come
-**Tour of Heroes** demo app from Angular 2 official
+starts the Koa instance. To load different environment settings for Koa middleware, set the enviornment variable KOA_ENV as 'dev' or 'prod' before executing `npm run server`
 
 ## Examples
 
