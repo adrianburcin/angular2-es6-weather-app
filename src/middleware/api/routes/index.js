@@ -1,3 +1,3 @@
 module.exports = function *() {
-    this.body = 'API Entry point';
+  this.body = 'API Entry point';
 };
