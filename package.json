@@ -1,11 +1,13 @@
 {
   "name": "angular2-es6",
   "version": "1.0.0",
+  "engines": {
+    "node": "5.4.1"
+  },
   "scripts": {
     "client": "gulp watch",
     "server": "nodemon src/middleware",
     "postinstall": "gulp",
-    "build": "npm run postinstall",
     "start": "concurrent \"npm run server\" \"npm run client\" "
   },
   "license": "ISC",
