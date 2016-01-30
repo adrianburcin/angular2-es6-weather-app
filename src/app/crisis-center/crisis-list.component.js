@@ -1,7 +1,7 @@
-import {Component, OnInit} from 'angular2/core';
-import {Router, RouteParams} from 'angular2/router';
+import { Component, OnInit } from 'angular2/core';
+import { Router, RouteParams } from 'angular2/router';
 
-import {Crisis, CrisisService} from './crisis.service';
+import { Crisis, CrisisService } from './crisis.service';
 
 @Component({
   template: `
@@ -12,7 +12,7 @@ import {Crisis, CrisisService} from './crisis.service';
         <span class="badge">{{crisis.id}}</span> {{crisis.name}}
       </li>
     </ul>
-  `,
+  `
 })
 export class CrisisListComponent implements OnInit {
   crises;
@@ -36,6 +36,6 @@ export class CrisisListComponent implements OnInit {
   }
 
   onSelect(crisis:Crisis) {
-    this.router.navigate(['CrisisDetail', {id: crisis.id}]);
+    this.router.navigate(['CrisisDetail', { id: crisis.id }]);
   }
 }

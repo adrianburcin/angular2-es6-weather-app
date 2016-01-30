@@ -1,4 +1,4 @@
-import {Injectable} from 'angular2/core';
+import { Injectable } from 'angular2/core';
 /**
  * Async modal dialog service
  * DialogService makes this app easier to test by faking this service.
@@ -11,7 +11,8 @@ export class DialogService {
    * Returns promise resolving to `true`=confirm or `false`=cancel
    */
   confirm(message) {
-    return new Promise((resolve, reject) =>
-      resolve(window.confirm(message || 'Is it OK?')));
-  };
+    return new Promise((resolve) =>
+      resolve(window.confirm(message || 'Is it OK?'))
+    );
+  }
 }

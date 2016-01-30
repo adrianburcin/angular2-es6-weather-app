@@ -15,7 +15,6 @@ var conf = require('./src/middleware/conf')(process.env.KOA_ENV);
 
 // Vendor scripts, the order matters.
 const VENDOR_FILES = [
-    //'es6-shim/es6-shim.js',
     'systemjs/dist/system-polyfills.js',
     'angular2/bundles/angular2-polyfills.js',
     'systemjs/dist/system.src.js',
@@ -32,7 +31,6 @@ gulp.task('app-html', () => {
 
 gulp.task('vendor-js', () => {
     return gulp.src(VENDOR_FILES)
-        //.pipe($.uglify())
         .pipe($.concatUtil('vendor.js'))
         .pipe(gulp.dest(TARGET));
 });
@@ -47,13 +45,18 @@ gulp.task('app-css', () => {
     return gulp.src(CSS_FILES)
         .pipe($.sass().on('error', $.sass.logError))
         .pipe($.autoprefixer())
-        //.pipe($.concatUtil('app.css'))
         .pipe(gulp.dest(TARGET));
 });
 
 gulp.task('app-index', () => {
     return gulp.src('index.html')
         .pipe(gulp.dest(TARGET));
+});
+
+gulp.task('eslint-app-js', () => {
+  return gulp.src(JS_FILES)
+    .pipe($.eslint())
+    .pipe($.eslint.format());
 });
 
 gulp.task('browser-sync', () => {
@@ -76,4 +79,4 @@ gulp.task('watch', ['browser-sync'], () => {
     gulp.watch(HTML_FILES, ['app-html', browserSync.reload]);
 });
 
-gulp.task('default', $.sequence('app-html', 'vendor-js', 'app-js', 'app-css'));
+gulp.task('default', $.sequence('eslint-app-js', 'app-html', 'vendor-js', 'app-js', 'app-css'));

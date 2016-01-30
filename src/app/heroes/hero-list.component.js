@@ -1,8 +1,8 @@
 // TODO SOMEDAY: Feature Componetized like CrisisCenter
-import {Component, OnInit}   from 'angular2/core';
-import {Router, RouteParams} from 'angular2/router';
+import { Component, OnInit } from 'angular2/core';
+import { Router, RouteParams } from 'angular2/router';
 
-import {Hero, HeroService}   from './hero.service';
+import { HeroService } from './hero.service';
 
 @Component({
   template: `
@@ -34,10 +34,10 @@ export class HeroListComponent implements OnInit {
   }
 
   onSelect(hero) {
-    this.router.navigate(['HeroDetail', {id: hero.id}]);
+    this.router.navigate(['HeroDetail', { id: hero.id }]);
   }
 
   ngOnInit() {
-    this.service.getHeroes().then(heroes => this.heroes = heroes)
+    this.service.getHeroes().then(heroes => this.heroes = heroes);
   }
 }

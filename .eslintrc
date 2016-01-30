@@ -1,0 +1,14 @@
+{
+    "parser": "babel-eslint",
+    "extends": "airbnb",
+    "env": {
+        "es6": true
+    },
+    "ecmaFeatures": {
+        "modules": true
+    },
+    "rules": {
+        "new-cap": 0,
+        "comma-dangle": [2, "never"]
+    }
+}
