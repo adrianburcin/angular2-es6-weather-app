@@ -1,5 +1,4 @@
-# Angular 2 apps with ES6(Babel) and Gulp
-# using [Angular2 with ES6(Babel) and Gulp boilerplate](https://github.com/adrianburcin/angular2-es6-babel-boilerplate)
+# Angular 2 apps with ES6(Babel) and Gulp using [Angular 2 with ES6(Babel) and Gulp boilerplate](https://github.com/adrianburcin/angular2-es6-babel-boilerplate)
 
 ## Try
 
