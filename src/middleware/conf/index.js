@@ -1,4 +1,9 @@
-module.exports = function conf(env) {
+const process = require('process');
+
+module.exports = function conf() {
+  const env = process.env.KOA_ENV;
   const config = require(`./${(env || 'default')}.json`);
-  return Object.assign({}, config);
+  const defaultConfig = env ? require(`./default.json`) : {};
+
+  return Object.assign({}, defaultConfig, config);
 };
