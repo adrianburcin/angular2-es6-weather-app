@@ -8,7 +8,8 @@
     "client": "gulp watch",
     "server": "nodemon src/middleware",
     "postinstall": "gulp",
-    "start": "concurrent \"npm run server\" \"npm run client\" "
+    "start": "npm run server",
+    "dev": "concurrent \"npm run server\" \"npm run client\" "
   },
   "license": "ISC",
   "dependencies": {
