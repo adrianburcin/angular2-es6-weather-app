@@ -4,7 +4,9 @@
   "scripts": {
     "client": "gulp watch",
     "server": "nodemon src/middleware",
-    "postinstall": "gulp"
+    "postinstall": "gulp",
+    "build": "npm run postinstall",
+    "start": "concurrent \"npm run server\" \"npm run client\" "
   },
   "license": "ISC",
   "dependencies": {
@@ -26,6 +28,7 @@
     "babel-plugin-type-assertion": "^0.3.0",
     "babel-preset-es2015": "^6.3.13",
     "browser-sync": "^2.11.1",
+    "concurrently": "^1.0.0",
     "eslint": "^1.10.3",
     "eslint-config-airbnb": "^4.0.0",
     "eslint-plugin-react": "^3.16.1",
