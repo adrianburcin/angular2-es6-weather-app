@@ -1,7 +1,10 @@
 <html>
 <head>
+    <!-- Set the base href --> 
+    <script>document.write('<base href="' + document.location + '" />');</script>
+
     <title>Angular 2 QuickStart</title>
-    <link rel="stylesheet" href="app.css" type="text/css">
+    <link rel="stylesheet" href="styles/app.css" type="text/css">
 </head>
 <body>
 <my-app>Loading...</my-app>
@@ -16,7 +19,7 @@
             }
         }
     });
-    System.import('app/boot')
+    System.import('app/main')
             .then(null, console.error.bind(console));
 </script>
 </html>

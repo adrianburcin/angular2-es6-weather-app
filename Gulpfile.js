@@ -21,7 +21,8 @@ const VENDOR_FILES = [
     'systemjs/dist/system.src.js',
     'rxjs/bundles/Rx.js',
     'angular2/bundles/angular2.dev.js',
-    'angular2/bundles/http.dev.js'
+    'angular2/bundles/http.dev.js',
+    'angular2/bundles/router.dev.js'
 ].map((file) => 'node_modules/' + file);
 
 gulp.task('app-html', () => {
@@ -46,7 +47,7 @@ gulp.task('app-css', () => {
     return gulp.src(CSS_FILES)
         .pipe($.sass().on('error', $.sass.logError))
         .pipe($.autoprefixer())
-        .pipe($.concatUtil('app.css'))
+        //.pipe($.concatUtil('app.css'))
         .pipe(gulp.dest(TARGET));
 });
 
@@ -79,4 +80,4 @@ gulp.task('watch', ['browser-sync'], () => {
     gulp.watch(HTML_FILES, ['app-html', browserSync.reload]);
 });
 
-gulp.task('default', $.sequence('app-html', 'vendor-js', 'app-js', 'app-css', 'app-index'));
+gulp.task('default', $.sequence('app-html', 'vendor-js', 'app-js', 'app-css'));

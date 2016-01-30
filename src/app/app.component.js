@@ -1,96 +1,42 @@
-import {Component, OnInit} from 'angular2/core';
-import {Hero} from './hero';
-import {HeroDetailComponent} from './hero-detail.component';
-import {HeroService} from './hero.service';
+import {Component} from 'angular2/core';
+import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
+
+import {CrisisCenterComponent} from './crisis-center/crisis-center.component';
+import {HeroListComponent}     from './heroes/hero-list.component';
+import {HeroDetailComponent}   from './heroes/hero-detail.component';
+
+import {DialogService}         from './dialog.service';
+import {HeroService}           from './heroes/hero.service';
 
 @Component({
   selector: 'my-app',
-  template:`
-    <h1>{{title}}</h1>
-    <h2>My Heroes</h2>
-    <ul class="heroes">
-      <li *ngFor="#hero of heroes"
-        [class.selected]="hero === selectedHero"
-        (click)="onSelect(hero)">
-        <span class="badge">{{hero.id}}</span> {{hero.name}}
-      </li>
-    </ul>
-    <my-hero-detail [hero]="selectedHero"></my-hero-detail>
+  template: `
+    <h1 class="title">Component Router</h1>
+    <nav>
+      <a [routerLink]="['CrisisCenter']">Crisis Center</a>
+      <a [routerLink]="['Heroes']">Heroes</a>
+    </nav>
+    <router-outlet></router-outlet>
   `,
-  styles:[`
-    .selected {
-      background-color: #CFD8DC !important;
-      color: white;
-    }
-    .heroes {
-      margin: 0 0 2em 0;
-      list-style-type: none;
-      padding: 0;
-      width: 10em;
-    }
-    .heroes li {
-      cursor: pointer;
-      position: relative;
-      left: 0;
-      background-color: #EEE;
-      margin: .5em;
-      padding: .3em 0em;
-      height: 1.6em;
-      border-radius: 4px;
-    }
-    .heroes li.selected:hover {
-      color: white;
-    }
-    .heroes li:hover {
-      color: #607D8B;
-      background-color: #EEE;
-      left: .1em;
-    }
-    .heroes .text {
-      position: relative;
-      top: -3px;
-    }
-    .heroes .badge {
-      display: inline-block;
-      font-size: small;
-      color: white;
-      padding: 0.8em 0.7em 0em 0.7em;
-      background-color: #607D8B;
-      line-height: 1em;
-      position: relative;
-      left: -1px;
-      top: -4px;
-      height: 1.8em;
-      margin-right: .8em;
-      border-radius: 4px 0px 0px 4px;
-    }
-  `],
-  directives: [HeroDetailComponent],
-  providers: [HeroService]
+  providers: [DialogService, HeroService],
+  directives: [ROUTER_DIRECTIVES]
 })
-export class AppComponent implements OnInit {
-  title = 'Tour of Heroes';
-  heroes;
-  selectedHero;
+@RouteConfig([
+  {
+    path: "/",
+    name: "root",
+    redirectTo: ["/CrisisCenter"]
+  },
+  { // Crisis Center child route
+    path: '/crisis-center/...',
+    name: 'CrisisCenter',
+    component: CrisisCenterComponent,
+    useAsDefault: true
+  },
 
-  constructor(_heroService: HeroService) {
-    this._heroService = _heroService;
-  }
-
-getHeroes() {
-  this._heroService.getHeroes().then(heroes => this.heroes = heroes);
+  {path: '/heroes', name: 'Heroes', component: HeroListComponent},
+  {path: '/hero/:id', name: 'HeroDetail', component: HeroDetailComponent},
+  {path: '/disaster', name: 'Asteroid', redirectTo: ['CrisisCenter', 'CrisisDetail', {id: 3}]}
+])
+export class AppComponent {
 }
-
-ngOnInit() {
-  this.getHeroes();
-}
-
-onSelect(hero: Hero) { this.selectedHero = hero; }
-}
-
-
-/*
- Copyright 2016 Google Inc. All Rights Reserved.
- Use of this source code is governed by an MIT-style license that
- can be found in the LICENSE file at http://angular.io/license
- */
