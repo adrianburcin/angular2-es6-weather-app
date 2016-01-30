@@ -18,5 +18,9 @@ Open your favourite browser and navigate to localhost:3001.
 **Tour of Heroes** demo app from Angular 2 official
 
 ## More examples
+
 ###### Routing & Navigation
 Switch the branch to ```feature/Routing_and_Navigation``` - [Angular example - Routing & Navigation](https://angular.io/docs/ts/latest/guide/router.html) basically works as is, but transpiled by Babel from ES6.
+
+###### Todo App example
+Switch branch to ```feature/Create_Todo_App``` - example of creating a todo app using Ng2 ES6 boilerplate
