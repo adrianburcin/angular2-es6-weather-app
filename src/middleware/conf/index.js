@@ -1,8 +1,4 @@
 module.exports = function conf(env) {
-
-  env = env || 'default';
-
-  var conf = require(`./${env}.json`);
-
-  return Object.assign({}, conf);
+  const config = require(`./${(env || 'default')}.json`);
+  return Object.assign({}, config);
 };
