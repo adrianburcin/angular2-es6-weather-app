@@ -1,6 +1,6 @@
 const gulp = require('gulp');
 const $ = require('gulp-load-plugins')({
-    scope: ['devDependencies'],
+    scope: ['dependencies'],
     lazy: true
 });
 const browserSync = require('browser-sync');
