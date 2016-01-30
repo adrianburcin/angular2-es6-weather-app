@@ -1,9 +1,7 @@
 const koa = require('koa');
 const app = koa();
 const serve = require('koa-static');
-const process = require('process');
-
-const conf = require('./conf')(process.env.KOA_ENV);
+const conf = require('./conf')();
 const api = require('./api');
 
 app.use(api.routes())

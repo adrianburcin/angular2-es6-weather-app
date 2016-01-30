@@ -11,7 +11,7 @@ const CSS_FILES = ['src/**/*.scss'];
 const HTML_FILES = ['src/**/*.html'];
 const TARGET = 'dist';
 
-var conf = require('./src/middleware/conf')(process.env.KOA_ENV);
+const conf = require('./src/middleware/conf')();
 
 // Vendor scripts, the order matters.
 const VENDOR_FILES = [
