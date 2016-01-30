@@ -59,12 +59,8 @@ gulp.task('app-index', () => {
 gulp.task('browser-sync', () => {
 
     var proxy = {
-        target: 'localhost:' + HTTP_PORT
+        target: `localhost:${conf.port}`
     };
-    var app = connect();
-
-    app.use(sStatic(TARGET));
-    app.listen(HTTP_PORT);
 
     return browserSync({
         proxy: proxy,
