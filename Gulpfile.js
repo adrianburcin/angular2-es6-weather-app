@@ -31,7 +31,7 @@ gulp.task('app-html', () => {
 
 gulp.task('vendor-js', () => {
     return gulp.src(VENDOR_FILES)
-        .pipe($.uglify())
+        //.pipe($.uglify())
         .pipe($.concatUtil('vendor.js'))
         .pipe(gulp.dest(TARGET));
 });
