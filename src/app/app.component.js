@@ -21,6 +21,7 @@ import {HeroService}           from './heroes/hero.service';
   providers: [DialogService, HeroService],
   directives: [ROUTER_DIRECTIVES]
 })
+
 @RouteConfig([
   {
     path: "/",
