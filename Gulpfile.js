@@ -6,12 +6,12 @@ const $ = require('gulp-load-plugins')({
 const browserSync = require('browser-sync');
 const process = require('process');
 
-var conf = require('./src/middleware/conf')(process.env.KOA_ENV);
-
 const JS_FILES = ['src/**/*.js'];
 const CSS_FILES = ['src/**/*.scss'];
 const HTML_FILES = ['src/**/*.html'];
 const TARGET = 'dist';
+
+var conf = require('./src/middleware/conf')(process.env.KOA_ENV);
 
 // Vendor scripts, the order matters.
 const VENDOR_FILES = [
@@ -21,7 +21,8 @@ const VENDOR_FILES = [
     'systemjs/dist/system.src.js',
     'rxjs/bundles/Rx.js',
     'angular2/bundles/angular2.dev.js',
-    'angular2/bundles/http.dev.js'
+    'angular2/bundles/http.dev.js',
+    'angular2/bundles/router.dev.js'
 ].map((file) => 'node_modules/' + file);
 
 gulp.task('app-html', () => {
@@ -31,7 +32,7 @@ gulp.task('app-html', () => {
 
 gulp.task('vendor-js', () => {
     return gulp.src(VENDOR_FILES)
-        .pipe($.uglify())
+        //.pipe($.uglify())
         .pipe($.concatUtil('vendor.js'))
         .pipe(gulp.dest(TARGET));
 });
@@ -46,7 +47,7 @@ gulp.task('app-css', () => {
     return gulp.src(CSS_FILES)
         .pipe($.sass().on('error', $.sass.logError))
         .pipe($.autoprefixer())
-        .pipe($.concatUtil('app.css'))
+        //.pipe($.concatUtil('app.css'))
         .pipe(gulp.dest(TARGET));
 });
 
@@ -58,14 +59,18 @@ gulp.task('app-index', () => {
 gulp.task('browser-sync', () => {
 
     var proxy = {
-        target: 'localhost:' + conf.port
+        target: 'localhost:' + HTTP_PORT
     };
+    var app = connect();
+
+    app.use(sStatic(TARGET));
+    app.listen(HTTP_PORT);
 
     return browserSync({
-        proxy : proxy,
+        proxy: proxy,
         notify: false, // Do not show the the notification
-        open : false, // don't automatically open browser
-        ghostMode : false // don't make it mirror all actions accross browsers (click/forms/scroll)
+        open: false, // don't automatically open browser
+        ghostMode: false // don't make it mirror all actions accross browsers (click/forms/scroll)
     });
 });
 
@@ -75,4 +80,4 @@ gulp.task('watch', ['browser-sync'], () => {
     gulp.watch(HTML_FILES, ['app-html', browserSync.reload]);
 });
 
-gulp.task('default', $.sequence('app-html', 'vendor-js', 'app-js', 'app-css', 'app-index'));
+gulp.task('default', $.sequence('app-html', 'vendor-js', 'app-js', 'app-css'));
