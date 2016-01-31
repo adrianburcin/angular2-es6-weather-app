@@ -1,4 +1,4 @@
-export const apiUrls = {
+export const APIUrls = {
   base: '../api',
   endpoints: {
     cities: '/cities/',

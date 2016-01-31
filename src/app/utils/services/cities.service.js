@@ -1,21 +1,22 @@
 import { Injectable } from 'angular2/core';
 import { Http } from 'angular2/http';
 
+import { APIUrls } from '../../configs/api';
+
 @Injectable()
 export class Cities {
 
   // Angular 2 DI
   static get parameters() {
-    return [Http, 'apiUrls'];
+    return [Http];
   }
 
-  constructor(http, apiUrls) {
+  constructor(http) {
     this.http = http;
-    this.apiUrls = apiUrls;
   }
 
   getSuggestions(city) {
-    const url = `${this.apiUrls.base}${this.apiUrls.endpoints.cities}${city}`;
+    const url = `${APIUrls.base}${APIUrls.endpoints.cities}${city}`;
     return this.http.get(url, {});
   }
 }

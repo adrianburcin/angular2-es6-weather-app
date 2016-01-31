@@ -25,10 +25,10 @@ export class HeroListComponent implements OnInit {
 
   // Angular 2 DI
   static get parameters() {
-    return [HeroService, Router, RouteParams, 'apiUrls'];
+    return [HeroService, Router, RouteParams];
   }
 
-  constructor(service, router, routeParams, apiUrls) {
+  constructor(service, router, routeParams) {
     this.service = service;
     this.router = router;
     this.routeParams = routeParams;
