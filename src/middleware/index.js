@@ -13,4 +13,5 @@ app.use(api.routes())
      console.log(`${this.method} ${this.url} - ${ms}ms`);
    })
    .use(serve('dist'))
-   .listen(process.env.PORT || conf.port /* First Heroku, then our conf */, () => console.log(`Koa is listening on localhost:${conf.port}`));
+   .listen(process.env.PORT || conf.port /* First Heroku, then our conf */,
+       () => console.log(`Koa is listening on localhost:${conf.port}`));
