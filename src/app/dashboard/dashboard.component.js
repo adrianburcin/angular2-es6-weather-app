@@ -5,7 +5,7 @@ import { Cities } from '../utils/services/cities.service';
 
 @Component({
   template: `
-    <h2>Weather</h2>
+    <h2>Your location</h2>
         <input-debounce
           [delay]="'500'"
           [placeholder]="'Search...'"
