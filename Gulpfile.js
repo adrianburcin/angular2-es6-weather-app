@@ -24,6 +24,15 @@ const VENDOR_FILES = [
     'angular2/bundles/router.dev.js'
 ].map((file) => 'node_modules/' + file);
 
+const VENDOR_CSS_FILES = [
+    'node_modules/normalize.css/normalize.css'
+];
+
+gulp.task('clean-dist', () => {
+    return gulp.src(TARGET)
+        .pipe($.clean());
+});
+
 gulp.task('app-html', () => {
     return gulp.src(HTML_FILES)
         .pipe(gulp.dest(TARGET));
@@ -42,10 +51,11 @@ gulp.task('app-js', () => {
 });
 
 gulp.task('app-css', () => {
-    return gulp.src(CSS_FILES)
+    return gulp.src(VENDOR_CSS_FILES.concat(CSS_FILES))
         .pipe($.sass().on('error', $.sass.logError))
         .pipe($.autoprefixer())
-        .pipe(gulp.dest(TARGET));
+        .pipe($.flatten())
+        .pipe(gulp.dest(`${TARGET}/styles`));
 });
 
 gulp.task('app-index', () => {
@@ -80,4 +90,4 @@ gulp.task('watch', ['browser-sync'], () => {
     gulp.watch(JS_FILES, ['eslint-app-js', browserSync.reload]);
 });
 
-gulp.task('default', $.sequence('eslint-app-js', 'app-html', 'vendor-js', 'app-js', 'app-css'));
+gulp.task('default', $.sequence('clean-dist', 'eslint-app-js', 'app-html', 'vendor-js', 'app-js', 'app-css'));
