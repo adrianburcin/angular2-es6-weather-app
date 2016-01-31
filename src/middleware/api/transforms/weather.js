@@ -1,5 +1,11 @@
 const _ = require('lodash');
 
+function mapDate(forecastItem) {
+  return _.assign({}, forecastItem, {
+    date: (new Date(forecastItem.date)).getTime()
+  });
+}
+
 function composeWeatherObject(weatherObject) {
   return _.omit(_.assign({}, weatherObject, {
     forecast: _.get(weatherObject, 'item.forecast'),
@@ -29,7 +35,7 @@ function mapUnitsOfMeasure(weatherObject) {
   }
 
   return _.assign(_.mapValues(weatherObject, mapItemObject), {
-    forecast: _.map(weatherObject.forecast, mapItemObject)
+    forecast: _.map(weatherObject.forecast, _.flow(mapDate, mapItemObject))
   });
 }
 
