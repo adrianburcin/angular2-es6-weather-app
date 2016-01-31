@@ -1,3 +1,5 @@
 language: node_js
 node_js:
 - "5.4"
+notifications:
+  slack: weather-app:6wRATr82tYJELs4dsfTHLv9M
