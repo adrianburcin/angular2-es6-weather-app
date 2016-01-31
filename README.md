@@ -1,5 +1,4 @@
-# Angular 2 apps with ES6(Babel) and Gulp using [Angular 2 with ES6(Babel) and Gulp boilerplate](https://github.com/adrianburcin/angular2-es6-babel-boilerplate)
-
+# Weather app - Angular 2 with ES6(Babel) and Gulp + Koa
 ## Try
 
 ###### Install
@@ -9,21 +8,28 @@ npm install
 
 ###### Run
 ```
-npm run client
+npm run dev
 ```
-starts the client app
+starts the server and client app concurrently which will serve the client on 3000 and server on 8080
+
+OR
+
+```
+npm start
+```
+to start the server which will serve also the client on port 8080
 
 
+####### Run only client or server
 ```
 npm run server
 ```
-starts the Koa instance. To load different environment settings for Koa middleware, set the enviornment variable KOA_ENV as 'dev' or 'prod' before executing `npm run server`
+For preview, check localhost:8080/api/weather/Bucharest OR localhost:8080/api/cities/Bucharest
+**NOTES:** starts the Koa instance. To load different environment settings for Koa middleware, set the enviornment variable KOA_ENV as 'dev' or 'prod' before executing `npm run server`
 
-## Examples
+```
+npm run client
+```
+For preview, check localhost:3000
 
-###### Routing & Navigation
-Switch the branch to ```feature/Routing_and_Navigation``` - [Angular example - Routing & Navigation](https://angular.io/docs/ts/latest/guide/router.html) basically works as is, but transpiled by Babel from ES6.
-
-###### Todo App example
-Switch branch to ```feature/Create_Todo_App``` - example of creating a todo app using Ng2 ES6 boilerplate
-
+###### Started using [Angular 2 with ES6(Babel) and Gulp boilerplate](https://github.com/adrianburcin/angular2-es6-babel-boilerplate)
