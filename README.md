@@ -33,3 +33,6 @@ npm run client
 For preview, check localhost:3000
 
 ###### Started using [Angular 2 with ES6(Babel) and Gulp boilerplate](https://github.com/adrianburcin/angular2-es6-babel-boilerplate)
+
+####Fixing issues
+As a general rule, your branch should match one issue/feature in the issues list. Please add the issue number like this #10 in your branch commit message in order to also close the issue when the branch is being approved/merged in.
