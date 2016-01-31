@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/adrianburcin/angular2-es6-weather-app.svg?branch=master)](https://travis-ci.org/adrianburcin/angular2-es6-weather-app)
 # Weather app - Angular 2 with ES6(Babel) and Gulp + Koa
 ## Try
 
