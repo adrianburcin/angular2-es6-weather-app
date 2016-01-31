@@ -26,10 +26,12 @@ export class CrisisDetailComponent implements OnInit, CanDeactivate {
   crisis;
   editName;
 
-  constructor(service: CrisisService,
-              router: Router,
-              routeParams: RouteParams,
-              dialog: DialogService) {
+// Angular 2 DI
+  static get parameters() {
+    return [CrisisService, Router, RouteParams, DialogService];
+  }
+
+  constructor(service, router, routeParams, dialog) {
     this.service = service;
     this.router = router;
     this.routeParams = routeParams;
@@ -73,6 +75,6 @@ export class CrisisDetailComponent implements OnInit, CanDeactivate {
     // Pass along the hero id if available
     // so that the CrisisListComponent can select that hero.
     // Add a totally useless `foo` parameter for kicks.
-    this.router.navigate(['CrisisCenter', { id: crisisId, foo: 'foo' }]);
+    this.router.navigate(['CrisisCenter', {id: crisisId, foo: 'foo'}]);
   }
 }

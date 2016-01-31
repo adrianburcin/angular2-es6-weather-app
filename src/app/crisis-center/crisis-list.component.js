@@ -18,9 +18,12 @@ export class CrisisListComponent implements OnInit {
   crises;
   selectedId;
 
-  constructor(service:CrisisService,
-              router:Router,
-              routeParams:RouteParams) {
+  // Angular 2 DI
+  static get parameters() {
+    return [CrisisService, Router, RouteParams];
+  }
+
+  constructor(service, router, routeParams) {
     this.service = service;
     this.router = router;
     this.routeParams = routeParams;
@@ -36,6 +39,6 @@ export class CrisisListComponent implements OnInit {
   }
 
   onSelect(crisis:Crisis) {
-    this.router.navigate(['CrisisDetail', { id: crisis.id }]);
+    this.router.navigate(['CrisisDetail', {id: crisis.id}]);
   }
 }

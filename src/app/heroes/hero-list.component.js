@@ -2,11 +2,13 @@
 import { Component, OnInit } from 'angular2/core';
 import { Router, RouteParams } from 'angular2/router';
 
+import { InputDebounceComponent } from '../utils/components/input-debounce.component.js';
 import { HeroService } from './hero.service';
 
 @Component({
   template: `
     <h2>HEROES</h2>
+        <input-debounce delay="500" placeholder="Search..." (value)="searchChanged($event)"></input-debounce>
     <ul>
       <li *ngFor="#hero of heroes"
         [class.selected]="isSelected(hero)"
@@ -14,15 +16,19 @@ import { HeroService } from './hero.service';
         <span class="badge">{{hero.id}}</span> {{hero.name}}
       </li>
     </ul>
-  `
+  `,
+  directives: [InputDebounceComponent]
 })
 export class HeroListComponent implements OnInit {
   heroes;
   selectedId;
 
-  constructor(service:HeroService,
-              router:Router,
-              routeParams:RouteParams) {
+  // Angular 2 DI
+  static get parameters() {
+    return [HeroService, Router, RouteParams, 'apiUrls'];
+  }
+
+  constructor(service, router, routeParams, apiUrls) {
     this.service = service;
     this.router = router;
     this.routeParams = routeParams;

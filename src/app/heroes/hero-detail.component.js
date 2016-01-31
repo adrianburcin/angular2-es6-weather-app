@@ -21,9 +21,12 @@ import { HeroService } from './hero.service';
 export class HeroDetailComponent implements OnInit {
   hero;
 
-  constructor(router:Router,
-              routeParams:RouteParams,
-              service:HeroService) {
+  // Angular 2 DI
+  static get parameters() {
+    return [Router, RouteParams, HeroService];
+  }
+
+  constructor(router, routeParams, service) {
     this.router = router;
     this.routeParams = routeParams;
     this.service = service;
@@ -39,6 +42,6 @@ export class HeroDetailComponent implements OnInit {
     // Pass along the hero id if available
     // so that the HeroList component can select that hero.
     // Add a totally useless `foo` parameter for kicks.
-    this.router.navigate(['Heroes', { id: heroId, foo: 'foo' }]);
+    this.router.navigate(['Heroes', {id: heroId, foo: 'foo'}]);
   }
 }

@@ -4,6 +4,7 @@ import { RouteConfig, ROUTER_DIRECTIVES } from 'angular2/router';
 import { CrisisCenterComponent } from './crisis-center/crisis-center.component';
 import { HeroListComponent } from './heroes/hero-list.component';
 import { HeroDetailComponent } from './heroes/hero-detail.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { DialogService } from './dialog.service';
 import { HeroService } from './heroes/hero.service';
@@ -15,6 +16,7 @@ import { HeroService } from './heroes/hero.service';
     <nav>
       <a [routerLink]="['CrisisCenter']">Crisis Center</a>
       <a [routerLink]="['Heroes']">Heroes</a>
+      <a [routerLink]="['Dashboard']">Dashboard</a>
     </nav>
     <router-outlet></router-outlet>
   `,
@@ -26,12 +28,19 @@ import { HeroService } from './heroes/hero.service';
   {
     path: '/',
     name: 'root',
-    redirectTo: ['/CrisisCenter'] },
+    redirectTo: ['/Dashboard']
+  },
   { // Crisis Center child route
     path: '/crisis-center/...',
     name: 'CrisisCenter',
-    component: CrisisCenterComponent,
-    useAsDefault: true },
+    component: CrisisCenterComponent
+  },
+  { // Crisis Center child route
+    path: '/dashboard',
+    name: 'Dashboard',
+    component: DashboardComponent,
+    useAsDefault: true
+  },
 
   { path: '/heroes', name: 'Heroes', component: HeroListComponent },
   { path: '/hero/:id', name: 'HeroDetail', component: HeroDetailComponent },
