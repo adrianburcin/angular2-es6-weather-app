@@ -1,5 +1,4 @@
 import { Component } from 'angular2/core';
-import { HTTP_PROVIDERS } from 'angular2/http';
 
 import { InputDebounceComponent } from '../utils/components/input-debounce.component.js';
 import { Cities } from '../utils/services/cities.service';
@@ -20,7 +19,7 @@ import { Cities } from '../utils/services/cities.service';
       </li>
     </ul>
   `,
-  providers: [HTTP_PROVIDERS, Cities],
+  providers: [Cities],
   directives: [InputDebounceComponent]
 })
 export class DashboardComponent {
