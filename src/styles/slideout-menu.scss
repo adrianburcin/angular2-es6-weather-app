@@ -1,0 +1,54 @@
+.slideout-menu {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 0;
+  width: 256px;
+  overflow-y: auto;
+  overflow-scrolling: touch;
+  display: none;
+}
+
+.slideout-panel {
+  position: fixed;
+  top: 0px;
+  z-index: 1;
+  will-change: transform;
+}
+
+.slideout-open,
+.slideout-open body,
+.slideout-open .slideout-panel {
+  overflow: hidden;
+}
+
+.slideout-open .slideout-menu {
+  display: block;
+}
+
+.slideout__content {
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+  padding: 1.5em;
+}
+
+.slideout__menu {
+  margin: 0px;
+  padding: 1em;
+}
+
+.slideout__menu--background {
+  background-color: rgb(29, 31, 32);
+  background-image: linear-gradient(145deg, rgb(29, 31, 32), rgb(64, 67, 72));
+}
+
+.slideout__content--background {
+  background-color: #FFFFFF;
+}
+
+.slideout__menu__title, .slideout__menu__item {
+  color: #ffffff;
+}

@@ -1,17 +1,13 @@
-import { Component } from 'angular2/core';
+import { Component, OnInit } from 'angular2/core';
 import { RouteConfig, ROUTER_DIRECTIVES } from 'angular2/router';
+
+import Slideout from '../vendors/slideout.js';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 @Component({
   selector: 'weather-app',
-  template: `
-    <h1 class="title">Weather</h1>
-    <nav>
-      <a [routerLink]="['Dashboard']">Dashboard</a>
-    </nav>
-    <router-outlet></router-outlet>
-  `,
+  templateUrl: 'app/app.component.html',
   directives: [ROUTER_DIRECTIVES]
 })
 
@@ -28,5 +24,20 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     useAsDefault: true
   }
 ])
-export class AppComponent {
+export class AppComponent implements OnInit {
+  constructor() {
+  }
+
+  ngOnInit() {
+    this.slideout = new Slideout({
+      panel: document.getElementById('slideout-content'),
+      menu: document.getElementById('slideout-menu'),
+      padding: 256,
+      tolerance: 70
+    });
+  }
+
+  toggleMenu() {
+    this.slideout.toggle();
+  }
 }

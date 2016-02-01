@@ -9,6 +9,7 @@ const process = require('process');
 const JS_FILES = ['src/**/*.js'];
 const CSS_FILES = ['src/**/*.scss'];
 const HTML_FILES = ['src/**/*.html'];
+const TERGET_VENDOR_FILES = 'dist/vendors';
 const TARGET = 'dist';
 
 const conf = require('./src/middleware/conf')();
@@ -24,6 +25,10 @@ const VENDOR_FILES = [
     'angular2/bundles/router.dev.js'
 ].map((file) => 'node_modules/' + file);
 
+const VENDOR_FILES_UNCHANGED = [
+    'slideout/dist/slideout.js'
+].map((file) => 'node_modules/' + file);
+
 gulp.task('app-html', () => {
     return gulp.src(HTML_FILES)
         .pipe(gulp.dest(TARGET));
@@ -32,7 +37,12 @@ gulp.task('app-html', () => {
 gulp.task('vendor-js', () => {
     return gulp.src(VENDOR_FILES)
         .pipe($.concatUtil('vendor.js'))
-        .pipe(gulp.dest(TARGET));
+        .pipe(gulp.dest(TERGET_VENDOR_FILES));
+});
+
+gulp.task('vendor-unchanged-js', () => {
+    return gulp.src(VENDOR_FILES_UNCHANGED)
+      .pipe(gulp.dest(TERGET_VENDOR_FILES));
 });
 
 gulp.task('app-js', () => {
@@ -80,4 +90,4 @@ gulp.task('watch', ['browser-sync'], () => {
     gulp.watch(JS_FILES, ['eslint-app-js', browserSync.reload]);
 });
 
-gulp.task('default', $.sequence('eslint-app-js', 'app-html', 'vendor-js', 'app-js', 'app-css'));
+gulp.task('default', $.sequence('eslint-app-js', 'app-html', 'vendor-js', 'vendor-unchanged-js', 'app-js', 'app-css'));
