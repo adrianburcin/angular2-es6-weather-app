@@ -1,16 +1,16 @@
-import { Component, OnInit } from 'angular2/core';
+import { Component } from 'angular2/core';
 import { RouteConfig, ROUTER_DIRECTIVES } from 'angular2/router';
 
-import Slideout from '../vendors/slideout.js';
-
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { SLIDEOUT_DIRECTIVES, SlideoutService } from './utils/directives/slideout.js';
+
 
 @Component({
   selector: 'weather-app',
   templateUrl: 'app/app.component.html',
-  directives: [ROUTER_DIRECTIVES]
+  directives: [ROUTER_DIRECTIVES, SLIDEOUT_DIRECTIVES],
+  providers: [SlideoutService]
 })
-
 @RouteConfig([
   {
     path: '/',
@@ -24,20 +24,18 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     useAsDefault: true
   }
 ])
-export class AppComponent implements OnInit {
-  constructor() {
-  }
+export class AppComponent {
+  slideoutService;
 
-  ngOnInit() {
-    this.slideout = new Slideout({
-      panel: document.getElementById('slideout-content'),
-      menu: document.getElementById('slideout-menu'),
-      padding: 256,
-      tolerance: 70
-    });
+  static parameters = [SlideoutService];
+
+  constructor(slideoutService) {
+    this.slideoutService = slideoutService;
   }
 
   toggleMenu() {
-    this.slideout.toggle();
+    if (this.slideoutService.slideout) {
+      this.slideoutService.slideout.toggle();
+    }
   }
 }

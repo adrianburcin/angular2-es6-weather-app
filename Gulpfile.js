@@ -26,7 +26,8 @@ const VENDOR_FILES = [
 ].map((file) => 'node_modules/' + file);
 
 const VENDOR_FILES_UNCHANGED = [
-    'slideout/dist/slideout.js'
+    'slideout/dist/slideout.js',
+    'lodash/lodash.js'
 ].map((file) => 'node_modules/' + file);
 
 gulp.task('app-html', () => {
