@@ -9,6 +9,7 @@
     },
     "rules": {
         "new-cap": 0,
-        "comma-dangle": [2, "never"]
+        "comma-dangle": [2, "never"],
+        "arrow-body-style": [2, "as-needed"]
     }
 }

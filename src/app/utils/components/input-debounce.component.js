@@ -25,6 +25,7 @@ export class InputDebounceComponent implements OnInit {
   ngOnInit() {
     const eventStream = Observable.fromEvent(this.elementRef.nativeElement, 'keyup')
       .map(() => this.inputValue)
+      .filter(() => this.inputValue.length > 2)
       .debounceTime(this.delay)
       .distinctUntilChanged();
 
