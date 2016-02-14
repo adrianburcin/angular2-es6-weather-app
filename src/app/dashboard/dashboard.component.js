@@ -15,7 +15,7 @@ import { Cities } from '../utils/services/cities.service';
     <ul>
       <li *ngFor="#city of cities"
         (click)="onSelectCity(city)">
-        <span>{{city.description}}</span>
+        <span>{{city.name}}, {{city.county}}, {{city.country}}</span>
       </li>
     </ul>
   `,
@@ -46,7 +46,7 @@ export class DashboardComponent {
   }
 
   onSelectCity(city) {
-    this.selectedCity = city.description;
+    this.selectedCity = [city.name, ', ', city.county, ', ', city.country].join('');
     this.cities = [];
   }
 }
