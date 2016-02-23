@@ -5,19 +5,25 @@ import { Cities } from '../utils/services/cities.service';
 
 @Component({
   template: `
-    <h2>Your location</h2>
-        <input-debounce
-          [delay]="'500'"
-          [placeholder]="'Search...'"
-          (callback)="searchChanged($event)"
-          [value]="selectedCity">
-        </input-debounce>
-    <ul>
-      <li *ngFor="#city of cities"
-        (click)="onSelectCity(city)">
-        <span>{{city.description}}</span>
-      </li>
-    </ul>
+    <div class="page-content--background">
+    <div class="page-content__background-mask--top"></div>
+    <div class="page-content__container">
+      <h2>Your location</h2>
+          <input-debounce
+            [delay]="'500'"
+            [placeholder]="'Search...'"
+            (callback)="searchChanged($event)"
+            [value]="selectedCity">
+          </input-debounce>
+      <ul>
+        <li *ngFor="#city of cities"
+          (click)="onSelectCity(city)">
+          <span>{{city.description}}</span>
+        </li>
+      </ul>
+      </div>
+      <div class="page-content__background-mask--bottom"></div>
+    </div>
   `,
   providers: [Cities],
   directives: [InputDebounceComponent]

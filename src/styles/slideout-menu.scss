@@ -73,9 +73,9 @@ $headerButtonsWidth: 35px;
 }
 
 .page-content {
-  padding-top: $headerHeight;
-  padding-left: 10px;
-  padding-right: 10px;
+  margin-top: $headerHeight;
+  height: 100%;
+  width: 100%;
 }
 
 .slideout-header__btn-left {

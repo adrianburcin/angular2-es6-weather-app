@@ -86,3 +86,32 @@ a.router-link-active {
   left: -1px;
   top: -1px;
 }
+
+.page-content--background {
+  height: 100%;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50%;
+  background-image: url("https://c1.staticflickr.com/9/8678/15528509944_7b68cb8dce_b.jpg");
+}
+
+.page-content__background-mask--top {
+  width: 100%;
+  background: #1651ab;
+  box-shadow: 0 0 100px 200px rgba(22, 81, 171, 0.8);//rgba(17, 52, 133, 0.8);;
+  position: absolute;
+}
+
+.page-content__background-mask--bottom {
+  width: 100%;
+  background: #1651ab;
+  box-shadow: 0 0 200px 300px rgba(22, 81, 171, 0.8);//rgba(17, 52, 133, 0.8);;
+  position: absolute;
+  bottom: 0;
+}
+
+.page-content__container {
+  z-index: 1;
+  position: absolute;
+}
