@@ -51,7 +51,6 @@ $headerButtonsWidth: 35px;
   color: #ffffff;
 }
 
-
 .slideout-header {
   background-color: #1651ab;
   color: #FFFFFF;
@@ -70,12 +69,6 @@ $headerButtonsWidth: 35px;
 
 .slideout-header--fixed-open {
   transform: translate3d(256px, 0px, 0px);
-}
-
-.page-content {
-  margin-top: $headerHeight;
-  height: 100%;
-  width: 100%;
 }
 
 .slideout-header__btn-left {
