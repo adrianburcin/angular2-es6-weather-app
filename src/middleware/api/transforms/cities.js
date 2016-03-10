@@ -1,11 +1,16 @@
 const _ = require('lodash');
 
 function parse(response) {
-  return _.reduce(response, (acc, current) => {
+  var places = _.get(response, 'query.results.place');
+  if (!_.isArray(places)) {
+    places = new Array(places);
+  }
+
+  return _.reduce(places, (acc, current) => {
     acc.push({
-      description: current.description || '',
-      matchedSubstrings: current.matched_substrings || [],
-      terms: current.terms || []
+      name: _.get(current, 'name') || '',
+      country: _.get(current, 'country.content') || '',
+      county: _.get(current, 'admin1.content') || ''
     });
     return acc;
   }, []);
