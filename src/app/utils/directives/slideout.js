@@ -1,11 +1,11 @@
-import { Directive, Inject, ElementRef, TemplateRef, ViewContainerRef } from 'angular2/core';
+import { Directive, Inject, ElementRef, TemplateRef, ViewContainerRef, EventEmitter } from 'angular2/core';
 
 import Slideout from 'vendors/slideout.js';
 import * as _ from 'vendors/lodash.js';
 
 
 /**
- * <slideout>
+ * <slideout (onBeforeOpen)="onBeforeOpen()" (onBeforeClose)="onBeforeClose()">
  *    <div *slideoutItem="'menu'">Menu header + items</div>
  *    <div *slideoutItem="'content'">Page content</div>
  * </slideout>
@@ -29,18 +29,25 @@ export class SlideoutService {
 export class SlideoutDirective {
   directives;
   slideoutService;
+  onBeforeOpen;
+  onBeforeClose;
 
   static parameters = [
     new Inject(SlideoutService)
   ];
 
   static annotations = [
-    new Directive({ selector: 'slideout' })
+    new Directive({
+      selector: 'slideout',
+      outputs: ['onBeforeOpen', 'onBeforeClose']
+    })
   ];
 
   constructor(slideoutService) {
     this.directives = [];
     this.slideoutService = slideoutService;
+    this.onBeforeClose = new EventEmitter();
+    this.onBeforeOpen = new EventEmitter();
   }
 
   ngAfterContentInit() {
@@ -58,6 +65,16 @@ export class SlideoutDirective {
           padding: 256,
           tolerance: 70
         });
+
+        this.slideout
+          .on('beforeopen', () => {
+            this.onBeforeOpen.emit(true);
+          });
+
+        this.slideout
+          .on('beforeclose', () => {
+            this.onBeforeClose.emit(true);
+          });
 
         this.slideoutService.slideout = this.slideout;
       } else {

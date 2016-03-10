@@ -9,8 +9,11 @@ const process = require('process');
 const JS_FILES = ['src/**/*.js'];
 const CSS_FILES = ['src/**/*.scss'];
 const HTML_FILES = ['src/**/*.html'];
-const TERGET_VENDOR_FILES = 'dist/vendors';
+const ASSET_FILES = ['src/assets/**/*'];
+
 const TARGET = 'dist';
+const TERGET_VENDOR_FILES = [TARGET, '/vendors'].join('');
+const TARGET_ASSETS = [TARGET, '/assets'].join('');
 
 const conf = require('./src/middleware/conf')();
 
@@ -33,6 +36,11 @@ const VENDOR_FILES_UNCHANGED = [
 gulp.task('app-html', () => {
     return gulp.src(HTML_FILES)
         .pipe(gulp.dest(TARGET));
+});
+
+gulp.task('app-assets', () => {
+    return gulp.src(ASSET_FILES)
+      .pipe(gulp.dest(TARGET_ASSETS));
 });
 
 gulp.task('vendor-js', () => {
@@ -91,4 +99,4 @@ gulp.task('watch', ['browser-sync'], () => {
     gulp.watch(JS_FILES, ['eslint-app-js', browserSync.reload]);
 });
 
-gulp.task('default', $.sequence('eslint-app-js', 'app-html', 'vendor-js', 'vendor-unchanged-js', 'app-js', 'app-css'));
+gulp.task('default', $.sequence('eslint-app-js', 'app-html', 'app-assets', 'vendor-js', 'vendor-unchanged-js', 'app-js', 'app-css'));
