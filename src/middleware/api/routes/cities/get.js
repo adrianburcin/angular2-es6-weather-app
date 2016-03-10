@@ -6,20 +6,20 @@ const citiesTransformer = require('../../transforms/cities');
 const db = require('../../../store');
 
 module.exports = function *() {
-  const cities = _.find(conf.apis, { name: 'google' }).urls;
+  const cities = _.find(conf.apis, { name: 'yahoo' }).urls;
   const options = {
-    uri: util.format(`${cities.base}${cities.endpoints.cities}`, this.params.city, cities.key),
+    uri: util.format(`${cities.base}${cities.endpoints.cities}`, this.params.city),
     json: true
   };
 
-  var googleResult = yield db.readJSON(this.params.city);
+  var yahooResult = yield db.readJSON(this.params.city);
   
-  if (!googleResult) {
-    googleResult = citiesTransformer.parse((yield request(options)).predictions);
-    yield db.writeJSON(this.params.city, googleResult);
+  if (!yahooResult) {
+    yahooResult = citiesTransformer.parse(yield request(options));
+    yield db.writeJSON(this.params.city, yahooResult);
   }
 
   this.body = {
-    cities: googleResult
+    cities: yahooResult
   };
 };

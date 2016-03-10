@@ -1,3 +1,7 @@
+$headerHeight: 100px;
+$slideoutMenuWidth: 256px;
+$headerButtonsWidth: 35px;
+
 .slideout-menu {
   position: fixed;
   left: 0;
@@ -5,22 +9,28 @@
   bottom: 0;
   right: 0;
   z-index: 0;
-  width: 256px;
+  width: $slideoutMenuWidth;
   overflow-y: auto;
   overflow-scrolling: touch;
   display: none;
+  margin: 0;
+  padding: 1em;
+  box-sizing: border-box;
 }
 
-.slideout-panel {
+.slideout-content {
   position: fixed;
-  top: 0px;
+  top: 0;
   z-index: 1;
-  will-change: transform;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  overflow: auto;
 }
 
 .slideout-open,
 .slideout-open body,
-.slideout-open .slideout-panel {
+.slideout-open .slideout-content {
   overflow: hidden;
 }
 
@@ -28,27 +38,65 @@
   display: block;
 }
 
-.slideout__content {
-  height: 100%;
-  width: 100%;
-  margin: 0px;
-  padding: 1.5em;
-}
-
-.slideout__menu {
-  margin: 0px;
-  padding: 1em;
-}
-
-.slideout__menu--background {
+.slideout-menu--background {
   background-color: rgb(29, 31, 32);
   background-image: linear-gradient(145deg, rgb(29, 31, 32), rgb(64, 67, 72));
 }
 
-.slideout__content--background {
+.slideout-content--background {
   background-color: #FFFFFF;
 }
 
-.slideout__menu__title, .slideout__menu__item {
+.slideout-menu__title, .slideout-menu__item {
   color: #ffffff;
+}
+
+
+.slideout-header {
+  background-color: #1651ab;
+  color: #FFFFFF;
+  width: 100%;
+  height: $headerHeight;
+  line-height: $headerHeight;
+  box-shadow: 1px 1px 5px 0.1px #000000;
+}
+
+.slideout-header--fixed {
+  backface-visibility: hidden;
+  position: fixed;
+  z-index:2;
+  transition: transform 300ms ease;
+}
+
+.slideout-header--fixed-open {
+  transform: translate3d(256px, 0px, 0px);
+}
+
+.page-content {
+  padding-top: $headerHeight;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.slideout-header__btn-left {
+  background-image: url("../assets/header_btn_left.png");
+  background-repeat: no-repeat;
+  background-size: $headerButtonsWidth;
+  background-position: center;
+  height: 100%;
+  width: $headerButtonsWidth;
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.slideout-header__btn-right {
+  position: absolute;
+  background-image: url("../assets/header_btn_right.png");
+  background-repeat: no-repeat;
+  background-size: $headerButtonsWidth;
+  background-position: center;
+  height: 100%;
+  width: $headerButtonsWidth;
+  right: 20px;
+  display: inline-block;
 }

@@ -1,21 +1,23 @@
 <slideout>
-    <div *slideoutItem="'menu'" class="slideout__menu slideout__menu--background">
+    <div *slideoutItem="'menu'" class="slideout-menu slideout-menu--background">
         <header>
-            <h2 class="slideout__menu__title">Menu</h2>
+            <h2 class="slideout-menu__title">Menu</h2>
         </header>
         <ul>
-            <li class="slideout__menu__item" [routerLink]="['Dashboard']">Dashboard</li>
-            <li class="slideout__menu__item" [routerLink]="['Dashboard']">Week forecast</li>
-            <li class="slideout__menu__item" [routerLink]="['Dashboard']">Locations</li>
-            <li class="slideout__menu__item" [routerLink]="['Dashboard']">Settings</li>
+            <li class="slideout-menu__item" [routerLink]="['Dashboard']">Dashboard</li>
+            <li class="slideout-menu__item" [routerLink]="['Dashboard']">Week forecast</li>
+            <li class="slideout-menu__item" [routerLink]="['Dashboard']">Locations</li>
+            <li class="slideout-menu__item" [routerLink]="['Dashboard']">Settings</li>
         </ul>
     </div>
 
-    <div *slideoutItem="'content'" class="slideout__content slideout__content--background">
-        <header>
-            <button (click)="toggleMenu()" class="toggle-button">☰</button>
-            <h1 class="title">Weather</h1>
+    <div *slideoutItem="'content'" class="slideout-content slideout-content--background">
+        <header class="slideout-header slideout-header--fixed">
+            <div (click)="toggleMenu()" class="toggle-button slideout-header__btn-left"></div>
+            <div class="slideout-header__btn-right"></div>
         </header>
-        <router-outlet></router-outlet>
+        <div class="page-content">
+            <router-outlet></router-outlet>
+        </div>
     </div>
 </slideout>
