@@ -2,14 +2,13 @@
   "port":8080,
   "apis":[
     {
-      "name":"flickr",
+      "name":"wikipedia",
       "urls":{
-        "base":"https://api.flickr.com/services/rest",
+        "base":"https://en.wikipedia.org/w/api.php",
         "endpoints":{
-          "search":"?method=flickr.photos.search&api_key=%s&text=%s&format=json&nojsoncallback=1"
-        },
-        "key":"806504430ce578237cbcb29d4af08ff1",
-        "photo_url": "https://farm%s.staticflickr.com/%s/%s_%s_%s.png"
+          "search":"?action=query&titles=%s&prop=%s&imlimit=20&format=json",
+          "getImage":"?action=query&titles=%s&format=json&prop=imageinfo&iiprop=url"
+        }
       }
     },
     {
