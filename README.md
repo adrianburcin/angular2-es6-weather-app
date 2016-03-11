@@ -1,5 +1,16 @@
 [![Build Status](https://travis-ci.org/adrianburcin/angular2-es6-weather-app.svg?branch=master)](https://travis-ci.org/adrianburcin/angular2-es6-weather-app)
 # Weather app - Angular 2 with ES6(Babel) and Gulp + Koa
+
+## What we use:
+
+* [Babel](https://github.com/babel/babel)
+* [Angular2](https://github.com/angular/angular)
+* [SASS](https://github.com/sass/sass) with [BEM](https://en.bem.info/)
+* [KoaJS](https://github.com/koajs/koa)
+* [LevelDB](https://github.com/Level/levelup)
+* [Winston](https://github.com/winstonjs/winston)
+* [YQL](https://developer.yahoo.com/yql/)
+
 ## Try
 
 ###### Install
